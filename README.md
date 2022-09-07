@@ -20,6 +20,7 @@ liens sripts: https://github.com/Alain-Sardin/brief10/blob/main/brief10_creation
 > - Création des ressources Azure
 > - Installation du wiki
 > - Génération de l'image modifiée
+> - Finalisation de l'installation
 > - Script de création ressources Azure
 > - Processus d'installation amélioré
 > - Problèmes rencontrés
@@ -84,7 +85,7 @@ Et à ne pas lancer l'installation et la création de la database dédiée si ce
 
 ---
 
-## Installation du wiki 
+## Installation du wiki
     - Une fois les ressources crées, depuis l'url du site nous suivons la procédure d'installation de mediawiki.
     - Renseignement des informations :
         - base de données : MariaDB , login, pass et host de salem ainsi que le nom de la database dediée dans le serveur MariaDB (my_wiki).
@@ -113,10 +114,14 @@ Localement avec docker :
 - `docker push` l'image est sur notre dépot en ligne et ainsi accessible depuis azure.
 
 ---
-
-## Processus d'installation amélioré
+## Finialisation de l'installation
+- Nous supprimons l'app service mediawiki.
+- Nous le recréons avec l'image alaincloud/mediawiki:stable que nous avons modifié.
+- Nous nous rendons sur l'url du site : le wiki est fonctionnel avec son logo et compte administrateur.
 
 ---
+
+## Processus d'installation amélioré
 
 
 

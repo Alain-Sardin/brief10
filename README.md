@@ -13,12 +13,12 @@ liens sripts: https://github.com/Alain-Sardin/brief10/blob/main/brief10_creation
 ### Table des matières
 
 > - Objectif
-> - Estimation initiale
 > - Préambule
-> - Créer un groupe de ressources
-> - Créer une passerelle NAT
-> - Céation Azure Database MariaDB (saas)
+> - Estimation initiale du temps de travail
+> - Création des ressources Azure
+> - Génération de l'image modifiée
 > - Script de création ressources Azure
+> - Processus d'installation amélioré
 > - Problèmes rencontrés
 
 * * *
@@ -28,10 +28,19 @@ liens sripts: https://github.com/Alain-Sardin/brief10/blob/main/brief10_creation
 Le boss en a marre que les mêmes questions reviennent sans cesse. Il s'est promis de mettre en place un outil interne de type "Stack Overflow" et de forcer les prochains questionneurs à l'utiliser.
 Il ne sait pas quel outil utiliser, et il attend des propositions. L'utilisation de Docker est parfaite dans ce cas, car c'est rapide et interchangeable.
 
+---
+
+## Préambule
+- Nous avons opté pour la mise en place d'un wiki. Cela permetra de documenter les sujets importants pour le Big Boss et d'avoir les réponses au questions courantes des employés.
+- Pour réduire les coûts et travailler la communication, nous utilisons une base de donnée mutualisée MariaDB crée par Salem.
+- Dans notre cas cela nous modifie la marche à suivre; nous n'utilisons plus de docker-compose pour generer 2 containers dont une db, mais la création d'un container unique.
+- Comme documenté à la suite, l'installation sera faite en 2 étapes: 
+    - une premiere étape de génération de la base de donnée et d'un fichier Local_settings.php à partir de l'image officielle mediawiki:stable à reintegrer à l'image pour cloturer la phase d'installation.
+    - une deuxieme étape de géneration d'une image intégrant le fichier de settings et mise en ligne sur dockerhub pour qu'elle soit réutilisable lors de la création du site final.
 
 * * *
-## Estimation initiale
-
+## Estimation initiale du temps de travail
+le 31/08/2022
 temps total: 72h à 3 soit 24h/(8h jour) = 3 jours (voir avec les veilles)
 
 - Determination des objectifs - 3h
@@ -54,14 +63,22 @@ temps total: 72h à 3 soit 24h/(8h jour) = 3 jours (voir avec les veilles)
 
 
 * * *
+## Création des ressources Azure
 
-## Préambule
-- Nous avons opté pour la mise en place d'un wiki. Cela permetra de documenter les sujets importants pour le Big Boss et d'avoir les réponses au questions courantes des employés.
-- Pour réduire les coûts et travailler la communication, nous utilisons une base de donnée mutualisée MariaDB crée par Salem.
-- Dans notre cas cela nous modifie la marche à suivre; nous n'utilisons plus de docker-compose pour generer 2 containers dont une db, mais la création d'un container unique.
-- Comme documenté à la suite, l'installation sera faite en 2 étapes: 
-    - une premiere étape de génération de la base de donnée et d'un fichier Local_settings.php à partir de l'image officielle mediawiki:stable à reintegrer à l'image pour cloturer la phase d'installation.
-    - une deuxieme étape de géneration d'une image intégrant le fichier de settings et mise en ligne sur dockerhub pour qu'elle soit réutilisable lors de la création du site final.
+---
+
+## Génération de l'image modifiée
+
+---
+
+## Script de création ressources Azure
+
+---
+
+## Processus d'installation amélioré
+
+---
+
 
 
 * * *

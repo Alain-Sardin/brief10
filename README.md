@@ -100,7 +100,17 @@ Et à ne pas lancer l'installation et la création de la database dédiée si ce
 ---
 
 ## Génération de l'image modifiée
-
+Localement avec docker :
+- création d'un conteneur basé sur l'image officielle mediawiki:stable
+`docker run -tid --name=mediawiki mediawiki:stable`
+- transfert du fichier Local_settings.php vers le conteneur au même niveau que le index.php
+`docker cp Local_settings.php mediawiki:/var/www/html/`
+(nous transferons aussi un logo et modifions lien vers celui ci dans le fichier Local_settings.php).
+- Aprés vérification du conteneur avec un `docker exec -ti mediawiki bash` nous figeons le conteneur dans une image que l'on va push.
+`docker commit -m "mediawiki avec Localsettings" mediawiki mediawiki:version`.
+- Après création d'un compte dockerhub et repos pour mediawiki nous fesons un `docker login`. 
+- Pour que l'image soit push sur notre compte et dans le bon repos nous renomons l'image alaincloud/mediawiki:stable.
+- `docker push` l'image est sur notre dépot en ligne et ainsi accessible depuis azure.
 
 ---
 

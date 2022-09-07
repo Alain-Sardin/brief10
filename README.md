@@ -110,18 +110,14 @@ Localement avec docker :
 - Aprés vérification du conteneur avec un `docker exec -ti mediawiki bash` nous figeons le conteneur dans une image que l'on va push.
 `docker commit -m "mediawiki avec Localsettings" mediawiki mediawiki:version`.
 - Après création d'un compte dockerhub et repos pour mediawiki nous fesons un `docker login`. 
-- Pour que l'image soit push sur notre compte et dans le bon repos nous renomons l'image alaincloud/mediawiki:stable.
-- `docker push` l'image est sur notre dépot en ligne et ainsi accessible depuis azure.
+- Pour que l'image soit push sur notre compte et dans le bon repos nous renomons l'image alaincloud/mediawiki:stable. `docker tag <imageid> alaincloud/mediawiki:stable`
+- `docker push alaincloud/mediawiki:stable` l'image est sur notre dépot en ligne et ainsi accessible depuis azure.
 
 ---
 ## Finialisation de l'installation
 - Nous supprimons l'app service mediawiki.
 - Nous le recréons avec l'image alaincloud/mediawiki:stable que nous avons modifié.
 - Nous nous rendons sur l'url du site : le wiki est fonctionnel avec son logo et compte administrateur.
-
----
-
-## Processus d'installation amélioré
 
 
 
@@ -182,6 +178,10 @@ createAll
 echo "installation terminée"
 ```
 
+
+---
+
+## Processus d'installation amélioré
 
 
 * * *

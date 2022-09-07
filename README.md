@@ -95,7 +95,7 @@ temps total: 72h à 3 soit 24h/(8h jour) = 3 jours (voir avec les veilles)
 ## Script Done by : Yvette , Driton, Alain
 
 ###########################################################
-## Script For Web APP Wordpress - autoscaled - + MariaDB ##
+## Script For Web APP Mediawiki - brief 10  Docker Azure ##
 ###########################################################
 
 #variable preset

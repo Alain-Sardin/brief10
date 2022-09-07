@@ -67,7 +67,7 @@ temps total: 72h à 3 soit 24h/(8h jour) = 3 jours (voir avec les veilles)
 
 * * *
 ## Fonctionnement de l'image officielle mediawiki
-- L'image mediawiki est faite de façon à rester en procédure d'installation tant que le fichier generé Local_settings.php n'est pas stocker dans le même répertoire que index.php.
+- L'image mediawiki est faite de façon à rester en procédure d'installation tant que le fichier generé à la fin de cette procédure (Local_settings.php) n'est pas stocker dans le même répertoire que index.php.
 Et à ne pas lancer l'installation et la création de la database dédiée si ce même fichier est dans le répertoire d'index.php, et à être en mode "utilisation finale".
 - Plan d'action décidé :
     - utiliser l'image officielle mediawiki:stable pour la création des bases de données et du fichier Local_settings.php.

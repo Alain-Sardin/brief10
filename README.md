@@ -65,8 +65,14 @@ temps total: 72h à 3 soit 24h/(8h jour) = 3 jours (voir avec les veilles)
 
 * * *
 ## Création des ressources Azure
+    - Groupe de ressource
+    - App service plan linux.
+    - App service pour la webapp utilisant container docker avec l'image docker-hub mediawiki:stable
+    - Ajout de deployment slot DEV au slot déjà existant de Production, utilisant une image alaincloud/mediawiki:dev3 differente pour les tests.
 
 ---
+## Installation 
+
 
 ## Génération de l'image modifiée
 

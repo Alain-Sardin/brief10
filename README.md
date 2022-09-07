@@ -121,9 +121,9 @@ echo "installation terminée"
 * * *
 
 ## Problèmes rencontrés
-
-
-
-### Amelioration
-- transfert script en scp
-https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/
+- difficultés à trouver une image adéquate.
+- test d'une image askbot utilisant sqlite avant de changer
+- avec l'image mediawiki :
+    - installation en deux étapes avec un fichier Local_settings.php à réintegrer à l'image
+car l'edition du container sur azure impossible
+    - image intégrant le fichier Local_settings.php ne permet pas la création des bases de données, donc nous avons crée la db avec la premiere image, et finisalisé le site avec la deuxieme.

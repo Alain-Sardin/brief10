@@ -22,7 +22,7 @@ liens sripts: https://github.com/Alain-Sardin/brief10/blob/main/brief10_creation
 > - Génération de l'image modifiée
 > - Finalisation de l'installation
 > - Script de création ressources Azure
-> - Processus d'installation amélioré
+> - Processus d'installation accéléré
 > - Problèmes rencontrés
 
 * * *
@@ -81,7 +81,7 @@ Et à ne pas lancer l'installation et la création de la database dédiée si ce
     - Groupe de ressource
     - App service plan linux.
     - App service pour la webapp utilisant container docker avec l'image docker-hub mediawiki:stable
-    - Ajout de deployment slot DEV au slot déjà existant de Production, utilisant une image alaincloud/mediawiki:dev3 differente pour les tests.
+    - Ajout de deployment slot DEV au slot déjà existant de Production, utilisant une image alaincloud/mediawiki:dev3 qui servira pour les tests.
 
 ---
 
@@ -181,17 +181,24 @@ echo "installation terminée"
 
 ---
 
-## Processus d'installation amélioré
+## Processus d'installation accéléré
+*une fois l'image modifiée disponible il est possible de créer le site final plus vite, en utilisant deux slot de deployment dés le debut.*
+- création du groupe de ressource
+- création de l'app service plan
+- création de la webapp avec l'image docker modifiée alaincloud/mediawiki:stable
+- création du slot supplémentaire DEV avec l'image officielle mediawiki:stable
+- aller sur l'url du site slot DEV et faire l'installation en donnant les futurs infos du site prod, la db et compte admin est généré.
+- le site de production est ensuite accessible en version finalisée.
 
 
 * * *
 
 ## Problèmes rencontrés
 - difficultés à trouver une image adéquate.
-- test d'une image askbot utilisant sqlite avant de changer
+- test de plusieurs images dont askbot avec sqlite avec pour objectif d'utiliser un volume monté en fileshare ou blob dans un azure storage, avant de changer.
 - avec l'image mediawiki :
     - Problème de génération de la base de donnée médiawiki , en particulier une requete basée sur l'engine MyISAM alors qu'Azure ne supporte que InnoDB.
         - Solution : création de la requete en remplaçant manuelement le storage engine par InnoDB directement dans la database. Puis actualisation de la page. (merci Ludo)
     - installation en deux étapes avec un fichier Local_settings.php à réintegrer à l'image
-car nous n'avons pas réussi à editer le container sur azure. Mais de cette façon nous pouvons avoir un workflow ci/cd en pushant des images modifiées localement sur le repo alaincloud/mediawiki qui sont automatiquement deployée.
+car nous n'avons pas réussi à editer le container sur azure, que ce soit en ssh ou avec méthode de création de context et docker azure login. Mais de cette façon nous pouvons avoir un workflow ci/cd en pushant des images modifiées localement sur le repo alaincloud/mediawiki qui sont automatiquement deployée en activant le ci/cd dans les slots voulus.
     

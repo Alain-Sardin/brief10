@@ -56,7 +56,12 @@ temps total: 72h à 3 soit 24h/(8h jour) = 3 jours (voir avec les veilles)
 * * *
 
 ## Préambule
-
+- Nous avons opté pour la mise en place d'un wiki. Cela permetra de documenter les sujets importants pour le Big Boss et d'avoir les réponses au questions courantes des employés.
+- Pour réduire les coûts et travailler la communication, nous utilisons une base de donnée mutualisée MariaDB crée par Salem.
+- Dans notre cas cela nous modifie la marche à suivre; nous n'utilisons plus de docker-compose pour generer 2 containers dont une db, mais la création d'un container unique.
+- Comme documenté à la suite, l'installation sera faite en 2 étapes: 
+    - une premiere étape de génération de la base de donnée et d'un fichier Local_settings.php à partir de l'image officielle mediawiki:stable à reintegrer à l'image pour cloturer la phase d'installation.
+    - une deuxieme étape de géneration d'une image intégrant le fichier de settings et mise en ligne sur dockerhub pour qu'elle soit réutilisable lors de la création du site final.
 
 
 * * *

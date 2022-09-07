@@ -17,6 +17,7 @@ liens sripts: https://github.com/Alain-Sardin/brief10/blob/main/brief10_creation
 > - Préambule
 > - Estimation initiale du temps de travail
 > - Création des ressources Azure
+> - Installation du wiki
 > - Génération de l'image modifiée
 > - Script de création ressources Azure
 > - Processus d'installation amélioré
@@ -71,8 +72,18 @@ temps total: 72h à 3 soit 24h/(8h jour) = 3 jours (voir avec les veilles)
     - Ajout de deployment slot DEV au slot déjà existant de Production, utilisant une image alaincloud/mediawiki:dev3 differente pour les tests.
 
 ---
-## Installation 
+## Installation du wiki 
+    - Depuis l'url du site nous suivons la procédure d'installation de mediawiki.
+    - Renseignement des informations :
+        - base de données : MariaDB , login, pass et host de salem ainsi que le nom de la database dediée dans le serveur MariaDB (my_wiki).
+        - Compte administrateur du wiki
+        - Selection des options de fonctionnement du wiki :
+            - droit de consultation
+            - droit de création d'article limité aux autorisés/ inscrits/ tout le monde.
+            - nous laissons le wiki ouvert à tous en lecture et en creation pour la démo, mais pour une utilisation pro il faut plutôt limiter la création d'article aux autorisés inscrit, et la consultation aux inscrits.
+        -
 
+---
 
 ## Génération de l'image modifiée
 
@@ -153,6 +164,8 @@ echo "installation terminée"
 - difficultés à trouver une image adéquate.
 - test d'une image askbot utilisant sqlite avant de changer
 - avec l'image mediawiki :
+    - Problème de génération de la base de donnée médiawiki , en particulier une requete basée sur l'engine MyISAM alors qu'Azure ne supporte que InnoDB.
+        - Solution : création de la requete en remplaçant manuelement le storage engine par InnoDB directement dans la database. Puis actualisation de la page.
     - installation en deux étapes avec un fichier Local_settings.php à réintegrer à l'image
 car l'edition du container sur azure impossible
     - image intégrant le fichier Local_settings.php ne permet pas la création des bases de données, donc nous avons crée la db avec la premiere image, et finisalisé le site avec la deuxieme.

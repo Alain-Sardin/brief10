@@ -107,7 +107,7 @@ Localement avec docker :
 - transfert du fichier Local_settings.php vers le conteneur au même niveau que le index.php
 `docker cp Local_settings.php mediawiki:/var/www/html/`
 (nous transferons aussi un logo et modifions lien vers celui ci dans le fichier Local_settings.php).
-- Aprés vérification du conteneur avec un `docker exec -ti mediawiki bash` nous figeons le conteneur dans une image que l'on va push.
+- Aprés vérification du conteneur avec un `docker exec -ti mediawiki bash` nous en faisons une image que l'on va push.
 `docker commit -m "mediawiki avec Localsettings" mediawiki mediawiki:version`.
 - Après création d'un compte dockerhub et repos pour mediawiki nous fesons un `docker login`. 
 - Pour que l'image soit push sur notre compte et dans le bon repos nous renomons l'image alaincloud/mediawiki:stable. `docker tag <imageid> alaincloud/mediawiki:stable`

@@ -73,7 +73,7 @@ Et à ne pas lancer l'installation et la création de la database dédiée si ce
 - Plan d'action décidé :
     - utiliser l'image officielle mediawiki:stable pour la création des bases de données et du fichier Local_settings.php.
     - garder la db et le fichier Local_settings.php généré pour le premier site
-    - premier site que nous avons supprimé d'azure,
+    - premier site que nous allons supprimer d'azure,
     - puis recré en utilisant les mêmes valeurs grâce à la deuxieme image modifiée pushée sur alaincloud/mediawiki mais intégrant le Local_settings.php.
 
 ---

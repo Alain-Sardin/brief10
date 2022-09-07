@@ -13,8 +13,8 @@ liens sripts: https://github.com/Alain-Sardin/brief10/blob/main/brief10_creation
 
 ### Table des matières
 
+> - Contexte
 > - Objectif
-> - Préambule
 > - Estimation initiale du temps de travail
 > - Fonctionnement de l'image officielle mediawiki
 > - Création des ressources Azure
@@ -27,14 +27,14 @@ liens sripts: https://github.com/Alain-Sardin/brief10/blob/main/brief10_creation
 
 * * *
 
-## Objectif
+## Contexte
 
 Le boss en a marre que les mêmes questions reviennent sans cesse. Il s'est promis de mettre en place un outil interne de type "Stack Overflow" et de forcer les prochains questionneurs à l'utiliser.
 Il ne sait pas quel outil utiliser, et il attend des propositions. L'utilisation de Docker est parfaite dans ce cas, car c'est rapide et interchangeable.
 
 ---
 
-## Préambule
+## Objectif
 - Nous avons opté pour la mise en place d'un wiki. Cela permetra de documenter les sujets importants pour le Big Boss et d'avoir les réponses aux questions courantes des employés.
 - Pour réduire les coûts et travailler la communication, nous utilisons une base de donnée mutualisée MariaDB crée par Salem.
 - Dans notre cas cela nous modifie la marche à suivre; nous n'utilisons plus de docker-compose pour generer 2 containers dont une db, mais la création d'un container unique.

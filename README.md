@@ -16,6 +16,7 @@ liens sripts: https://github.com/Alain-Sardin/brief10/blob/main/brief10_creation
 > - Objectif
 > - Préambule
 > - Estimation initiale du temps de travail
+> - Fonctionnement de l'image officielle mediawiki
 > - Création des ressources Azure
 > - Installation du wiki
 > - Génération de l'image modifiée
@@ -33,7 +34,7 @@ Il ne sait pas quel outil utiliser, et il attend des propositions. L'utilisation
 ---
 
 ## Préambule
-- Nous avons opté pour la mise en place d'un wiki. Cela permetra de documenter les sujets importants pour le Big Boss et d'avoir les réponses au questions courantes des employés.
+- Nous avons opté pour la mise en place d'un wiki. Cela permetra de documenter les sujets importants pour le Big Boss et d'avoir les réponses aux questions courantes des employés.
 - Pour réduire les coûts et travailler la communication, nous utilisons une base de donnée mutualisée MariaDB crée par Salem.
 - Dans notre cas cela nous modifie la marche à suivre; nous n'utilisons plus de docker-compose pour generer 2 containers dont une db, mais la création d'un container unique.
 - Comme documenté à la suite, l'installation sera faite en 2 étapes: 
@@ -65,6 +66,16 @@ temps total: 72h à 3 soit 24h/(8h jour) = 3 jours (voir avec les veilles)
 
 
 * * *
+## Fonctionnement de l'image officielle mediawiki
+- L'image mediawiki est faite de façon à rester en procédure d'installation tant que le fichier generé Local_settings.php n'est pas stocker dans le même répertoire que index.php.
+Et à ne pas lancer l'installation et la création de la database dédiée si ce même fichier est dans le répertoire d'index.php, et à être en mode "utilisation finale".
+- Plan d'action décidé :
+    - utiliser l'image officielle mediawiki:stable pour la création des bases de données et du fichier Local_settings.php.
+    - garder la db et le fichier Local_settings.php généré pour le premier site
+    - premier site que nous avons supprimé d'azure,
+    - puis recré en utilisant les mêmes valeurs grâce à la deuxieme image modifiée pushée sur alaincloud/mediawiki mais intégrant le Local_settings.php.
+
+---
 ## Création des ressources Azure
     - Groupe de ressource
     - App service plan linux.
@@ -72,24 +83,24 @@ temps total: 72h à 3 soit 24h/(8h jour) = 3 jours (voir avec les veilles)
     - Ajout de deployment slot DEV au slot déjà existant de Production, utilisant une image alaincloud/mediawiki:dev3 differente pour les tests.
 
 ---
+
 ## Installation du wiki 
-    - Depuis l'url du site nous suivons la procédure d'installation de mediawiki.
+    - Une fois les ressources crées, depuis l'url du site nous suivons la procédure d'installation de mediawiki.
     - Renseignement des informations :
         - base de données : MariaDB , login, pass et host de salem ainsi que le nom de la database dediée dans le serveur MariaDB (my_wiki).
         - Compte administrateur du wiki
         - Selection des options de fonctionnement du wiki :
             - droit de consultation
-            - droit de création d'article limité aux autorisés/ inscrits/ tout le monde.
-            - nous laissons le wiki ouvert à tous en lecture et en creation pour la démo, mais pour une utilisation pro il faut plutôt limiter la création d'article aux autorisés inscrit, et la consultation aux inscrits.
-        -
+            - droit de création d'article limités aux autorisés/ inscrits/ tout le monde.
+            - nous laissons le wiki ouvert à tous en lecture et en creation pour la démo, mais pour une utilisation pro il faut plutôt limiter la création d'article aux autorisés inscrits, et la consultation aux inscrits.
+    - Voir problème rencontré avec requete (réglé)
+    - Génération d'un fichier Local_settings.php à intégrer dans le même répertoire que Index.php dans le conteneur.
+
 
 ---
 
 ## Génération de l'image modifiée
 
----
-
-## Script de création ressources Azure
 
 ---
 
@@ -165,7 +176,7 @@ echo "installation terminée"
 - test d'une image askbot utilisant sqlite avant de changer
 - avec l'image mediawiki :
     - Problème de génération de la base de donnée médiawiki , en particulier une requete basée sur l'engine MyISAM alors qu'Azure ne supporte que InnoDB.
-        - Solution : création de la requete en remplaçant manuelement le storage engine par InnoDB directement dans la database. Puis actualisation de la page.
+        - Solution : création de la requete en remplaçant manuelement le storage engine par InnoDB directement dans la database. Puis actualisation de la page. (merci Ludo)
     - installation en deux étapes avec un fichier Local_settings.php à réintegrer à l'image
-car l'edition du container sur azure impossible
-    - image intégrant le fichier Local_settings.php ne permet pas la création des bases de données, donc nous avons crée la db avec la premiere image, et finisalisé le site avec la deuxieme.
+car nous n'avons pas réussi à editer le container sur azure. Mais de cette façon nous pouvons avoir un workflow ci/cd en pushant des images modifiées localement sur le repo alaincloud/mediawiki qui sont automatiquement deployée.
+    

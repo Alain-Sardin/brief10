@@ -117,7 +117,7 @@ Localement avec docker :
 ## Finialisation de l'installation
 - Nous supprimons l'app service mediawiki.
 - Nous le recréons avec l'image alaincloud/mediawiki:stable que nous avons modifié.
-- Nous nous rendons sur l'url du site : le wiki est fonctionnel avec son logo et compte administrateur.
+- Nous nous rendons sur l'url du site : le wiki est fonctionnel avec son nouveau logo et compte administrateur. 
 
 ![resultat](/images/resultat.jpg)
 

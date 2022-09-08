@@ -2,7 +2,7 @@
 
 groupe 5 : Alain, Driton, Yvette
 
-création : 31/08/2022
+livré le 31/08/2022
 
 liens sripts: https://github.com/Alain-Sardin/brief10/blob/main/brief10_creationR.sh
 

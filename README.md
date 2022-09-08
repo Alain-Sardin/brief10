@@ -119,7 +119,7 @@ Localement avec docker :
 - Nous le recréons avec l'image alaincloud/mediawiki:stable que nous avons modifié.
 - Nous nous rendons sur l'url du site : le wiki est fonctionnel avec son logo et compte administrateur.
 
-
+![resultat](/images/resultat.jpg)
 
 * * *
 ## Script de création ressources Azure

@@ -200,5 +200,6 @@ echo "installation terminée"
     - Problème de génération de la base de donnée médiawiki , en particulier une requete basée sur l'engine MyISAM alors qu'Azure ne supporte que InnoDB.
         - Solution : création de la requete en remplaçant manuelement le storage engine par InnoDB directement dans la database. Puis actualisation de la page. (merci Ludo)
     - installation en deux étapes avec un fichier Local_settings.php à réintegrer à l'image
-car nous n'avons pas réussi à editer le container sur azure, que ce soit en ssh ou avec méthode de création de context et docker azure login. Mais de cette façon nous pouvons avoir un workflow ci/cd en pushant des images modifiées localement sur le repo alaincloud/mediawiki qui sont automatiquement deployée en activant le ci/cd dans les slots voulus.
-    
+car nous n'avons pas réussi à editer le container sur azure, que ce soit en ssh ou avec méthode de création de context et docker azure login.
+        - Solution : nous aurions pu utiliser azure container registry pour stocker nos images privée, generer une access key qui aurait été utilisé pour azure docker login, créer un context et faire les opérations que nous avons fait localement mais sur Azure.
+Mais de cette façon nous avons au final quand même pu avoir un workflow ci/cd en pushant des images modifiées localement sur le repo alaincloud/mediawiki qui sont automatiquement deployées en activant le ci/cd dans les slots voulus.

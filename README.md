@@ -7,7 +7,9 @@ livré le 08/09/2022
 liens sripts: https://github.com/Alain-Sardin/brief10/blob/main/brief10_creationR.sh
 
 
+***
 
+![diagram](/images/diagram.jpg)
 
 * * *
 
